@@ -13,7 +13,7 @@
 
 <div class="row">
   <div class="col-md-12 table-responsive">
-    <h1>Quan Li Phan Hoi</h1>
+    <h1>Quản Lí Phản Hồi</h1>
 
     <table class="table table-bordered table-hover">
       <thead>

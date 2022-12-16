@@ -15,7 +15,7 @@
 
 <div class="row">
   <div class="col-md-12 table-responsive">
-    <h1>Quan Li Nguoi Dung</h1>
+    <h1>Quản Lí Người Dùng</h1>
 
     <a href="editor.php"><button class="btn btn-success">Thêm người dùng</button></a>
 

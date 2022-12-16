@@ -145,6 +145,15 @@ foreach($_SESSION['cart'] as $item){
     $count += $item['num'];
 }
 ?>
+<?php
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+$count = 0;
+foreach($_SESSION['cart'] as $item){
+    $count += $item['num'];
+}
+?>
             <!-- mid header -->
             <div class="bg-main">
                 <div class="mid-header container">
@@ -154,9 +163,9 @@ foreach($_SESSION['cart'] as $item){
                         <i class='bx bx-search-alt'></i>
                     </div>
                     <ul class="user-menu">
-                        <li><a href="#"><i class='bx bxs-bell'></i></a></li>
-                        <li><a href="#"><i class='bx bxs-user-circle'></i></a></li>
-                        <li><a href="cart.php"><i class='bx bxs-cart'></i></a></li>
+                        <li><a href="#"><i class='bx bxs-bell'></i></a>Thông báo</li>
+                        <li><a href="#"><i class='bx bxs-user-circle'></i></a>Tài khoản</li>
+                        <li><a href="cart.php"><i class='bx bxs-cart'></i></a>Giỏ Hàng(<?=$count?>)</li>
                     </ul>
                 </div>
             </div>
@@ -180,7 +189,7 @@ foreach($_SESSION['cart'] as $item){
   ?>
   
   <li class="nav-item">
-    <a class="nav-link" href="contact.php">Lien He</a>
+    <a class="nav-link" href="contact.php">Liên Hệ - Phản Hồi</a>
   </li>
                     </ul>
                 </div>

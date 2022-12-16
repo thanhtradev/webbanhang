@@ -8,11 +8,13 @@
 
     $orderId= getGet('id');
 
+
     $sql = "select order_details.*, product.title,product.thumbnail from order_details left join product on product.id= order_details.product_id where order_details.order_id = $orderId";
     $data = executeResult($sql);
 
     $sql = "select * from orders where id =$orderId";
     $orderItem = executeResult($sql,true);
+   
 
 ?>
 

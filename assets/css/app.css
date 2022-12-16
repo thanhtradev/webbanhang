@@ -283,7 +283,7 @@ ul.devided > li:last-child {
                     var(--bottom-header-size)
             )
     );
-    padding: 0 20px;
+    padding: 0 10px;
 }
 
 .slider,

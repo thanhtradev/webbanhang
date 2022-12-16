@@ -27,7 +27,7 @@ function deleteCategory(){
 
 	$id=getPost('id');
 
-	  $sql = "select cout(*) as total from product where category_id = $id and deleted = 0";
+	  $sql = "select count(*) as total from product where category_id = $id and deleted = 0";
 	  $data = executeResult($sql,true);
 	  $total = $data['total'];
 	  if($total >0){

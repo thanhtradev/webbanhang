@@ -14,7 +14,7 @@
 
 <div class="row">
   <div class="col-md-12 table-responsive">
-    <h1>Quan Li Don Hang</h1>
+    <h1>Quản Lí Đơn Hàng</h1>
 
     <table class="table table-bordered table-hover">
       <thead>
@@ -44,10 +44,10 @@ foreach ($data as $item) {
           <th>'.$item['total_money'].'</th>
            <th>'.$item['order_date'].'</th>  
           <th style="width: 50px">';
-          if($item['status'] ==0){
-            echo '<button onclick="changeStautus('.$item['id'].',1)" class="btn btn-sm btn-success">Approve</button>
-            <button onclick="changeStautus('.$item['id'].',2)" class="btn btn-sm btn-danger">Cancel</button>';
-          }else if($item['status'] ==1){
+          if($item['status'] ==1){
+            echo '<button onclick="changeStautus('.$item['id'].',2)" class="btn btn-sm btn-success">Approve</button>
+            <button onclick="changeStautus('.$item['id'].',3)" class="btn btn-sm btn-danger">Cancel</button>';
+          }else if($item['status'] ==2){
             echo'<label class="badge badge-success">Approve</label>';
 
           }else{

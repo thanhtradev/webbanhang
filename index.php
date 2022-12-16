@@ -163,21 +163,35 @@ require_once('layouts/header.php');
 <!--San Pham Moi Nhat end-->
 
 <!-- special product -->
+<?php
+$num = 0;
+$sql = "SELECT *, COUNT(product_id) AS product_count from order_details GROUP BY product_id ORDER BY product_count DESC LIMIT 1";
+$product = executeResult($sql,true);
+$num = $product['order_id'];
+
+$sql = "select * from product where id = $num";
+$product_count = executeResult($sql,true);
+?>
+ <div class="section-header">
+                <h3>Sản Phẩm Nổi Bật</h2>
+            </div>
     <div class="bg-second">
         <div class="section container">
             <div class="row">
                 <div class="col-4 col-md-4">
                     <div class="sp-item-img">
-                        <img src="./assets/photos/aonuda2.jpg" alt="">
+                        <img src="<?=$product_count['thumbnail']?>" alt="">
                     </div>
                 </div>
                 <div class="col-7 col-md-8">
                     <div class="sp-item-info">
-                        <div class="sp-item-name">Sản phẩm nổi bật</div>
+                        <div class="sp-item-name"><?=$product_count['title']?></div>
                         <p class="sp-item-description">
-                            Khi nhắc đến ngày cưới, yếu tố quan trọng nhất, được quan tâm và để mắt đến nhiều nhất, chính là chiếc váy cưới. Chiếc váy cưới không chỉ là linh hồn của buổi tiệc cưới, mà còn như là đại diện của cô dâu
+                            <?=$product_count['description']?>
                         </p>
-                        <button class="btn-flat btn-hover">Mua Ngay</button>
+                        <div class="section-footer">
+                <a href="./products.php" class="btn-flat btn-hover">Xem tất cả</a>
+            </div>
                     </div>
                 </div>
             </div>

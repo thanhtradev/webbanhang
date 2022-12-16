@@ -8,12 +8,12 @@ require_once('layouts/header.php');
 <div class="row">
 	<table class="table table-bordered">
 		<tr>
-			<th>STT</th>
-			<th>Thumbnail</th>
-			<th>Tieu De</th>
-			<th>Gia</th>
-			<th>So Luong</th>
-			<th>Tong Gia</th>
+			<th>Số thứ tự</th>
+			<th>Hình ảnh</th>
+			<th>Tiêu đề</th>
+			<th>Giá</th>
+			<th>Số lượng</th>
+			<th>Tổng Giá</th>
 			<th></th>
 		</tr>
 <?php
@@ -43,7 +43,7 @@ foreach($_SESSION['cart'] as $item){
 
 
 	</table>
-	<a href="checkout.php"><button class="btn btn-success">Tiep Tuc Thanh Toan</button></a>
+	<a href="checkout.php"><button class="btn btn-success">Tiếp Tục Thanh Toán</button></a>
 	 
 </div>
 </div>
