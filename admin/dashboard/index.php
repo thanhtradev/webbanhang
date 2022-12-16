@@ -1,6 +1,5 @@
 
 <?php
-    
 
     $title = 'Quan Li Phan Hoi';
     $baseUrl = '../';
@@ -54,7 +53,28 @@
   </style>
 </head>
 <body>
-  <div class="analytics">
+   <div class="container-fluid px-4">
+     <div class="row g-3 my-2">
+       <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+        <div>
+          <div>
+            <h3 class="fs-2">720</h3>
+            <p class="fs-5">products</p>
+          </div>
+          <i class="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-e"></i>
+        </div>
+         
+       </div>
+     </div>
+   </div>
+</body>
+</html>
+
+<?php 
+     require_once'..\layouts\footer.php';
+ ?>
+
+<!--  <div class="analytics">
     <div class="analytic">
       <div class="analytic-icon">
         <span class="las la-eye"></span>
@@ -84,11 +104,4 @@
         <h2><?=$countFeedbank?></h2>
       </div>
     </div>
-  </div>
-
-</body>
-</html>
-
-<?php 
-     require_once'..\layouts\footer.php';
- ?>
+  </div> -->

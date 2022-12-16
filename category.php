@@ -26,13 +26,28 @@ if($category_id == null || $category_id == ''){
 	<?php
 	foreach($lastestItems as $item){
 		echo '
-		<div class="col-md-3 col-6 product-item">
-	     <a href="detail.php?id='.$item['id'].'"><img src="'.$item['thumbnail'].'" style="width:100%;height:280px"></a>
-      	<p>'.$item['category_name'].'</p>
-      	<p>'.$item['title'].'</p>
-     	<p style="color: red">'.number_format($item['discount']).'</p>
-      <p><button class="btn btn-success" onclick="addCart('.$item['id'].',1)" style="width:100%">Them Vao Gio Hang</button>
-      </p>
+		 <div class="col-md-3 col-6 product-card">
+    <div class"product-card-img">
+       <a href="detail.php?id='.$item['id'].'"><img src="'.$item['thumbnail'].'" style="height:380px; width: 400px"></a>
+    </div>
+       <div class="product-btn">
+                                <button class="btn-flat btn-hover btn-shop-now">Mua Ngay</button>
+                                <button onclick="addCart('.$item['id'].',1)" class="btn-flat btn-hover btn-cart-add">
+                                    <i class="bx bxs-cart-add"></i>
+                                </button>
+                                <button class="btn-flat btn-hover btn-cart-add">
+                                    <i class="bx bxs-heart"></i>
+                                </button>
+                            </div>
+                      
+       
+       <div class="product-card-name">
+                                 <p>'.$item['title'].'</p>
+                            </div>
+                             <div class="product-card-price">
+                                <span><del>'.number_format($item['price']).' VND</del></span>
+                                <span class="curr-price">'.number_format($item['discount']).' VND</span>
+                            </div>
         </div>';
 	}
 	?>

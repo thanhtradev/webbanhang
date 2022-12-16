@@ -158,10 +158,13 @@ foreach($_SESSION['cart'] as $item){
             <div class="bg-main">
                 <div class="mid-header container">
                     <a href="#" class="logo">Logo Shop</a>
+                     <form method="get" action="search.php">
                     <div class="search">
-                        <input type="text" placeholder="Search">
-                        <i class='bx bx-search-alt'></i>
+                            <input type="text" placeholder="Search" name="tukhoa">
+                            <button type="submit"><i class='bx bx-search-alt'></i></button>
+
                     </div>
+                     </form>
                     <ul class="user-menu">
                         <li><a href="#"><i class='bx bxs-bell'></i></a>Thông báo</li>
                         <li><a href="#"><i class='bx bxs-user-circle'></i></a>Tài khoản</li>

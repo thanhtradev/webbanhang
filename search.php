@@ -28,7 +28,7 @@ require_once('layouts/header.php');
         <div class="container">
             <div class="box">
                 <div class="breadcumb">
-                    <a href="./index.php">Trang Chủ></a>
+                    <a href="./index.php">Trang Chủ ></a>
                     
                     <a href="./products.php">Tất cả</a>
                 </div>
@@ -287,14 +287,17 @@ require_once('layouts/header.php');
     </div>
 
     <div class="col-md-9">
-        <div class="container">
-            <div class="row">
-             <?php
 
-             $sql = "select * from product";
-             $product = executeResult($sql);
-
-  foreach($product as $item){
+        <div class="row">
+         <?php
+        if(isset($_GET['tukhoa'])){
+            $tukhoa = $_GET['tukhoa'];
+          }else{
+            $tukhoa = '';
+          }
+         $sql = "select * from product where title like '%".$tukhoa."%'";
+         $lastestItems = executeResult($sql);
+    foreach($lastestItems as $item){
     echo '
     <div class="row">
     <div class="col-md-9 col-6 product-card">
@@ -324,7 +327,6 @@ require_once('layouts/header.php');
   }
   ?>
 </div>
-        </div>
     </div>
 </div>
     <!-- end products content -->

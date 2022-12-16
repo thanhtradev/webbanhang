@@ -36,7 +36,7 @@
 
 <div class="row">
   <div class="col-md-12 table-responsive">
-    <h1 style="margin-top:100px">Them nguoi dung</h1>
+    <h1 style="margin-top:100px">Thêm người dùng</h1>
 
     <div class="panel panel-primary">
       <div class="panel-heading">

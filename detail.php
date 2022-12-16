@@ -30,7 +30,7 @@ $productId = getGet('id');
 
 		<div class="col-md-6">
 			<ul class="breadcrumb">
-				<li><a href="index.php">Trang Chu</a></li>
+				<li><a href="index.php">Trang Chủ</a></li>
 				<li><a href="category.php?id=<?=$product['category_id']?>">/ <?=$product['category_name']?></a></li>
 				<li> / <?=$product['title']?></li>
 			</ul>
@@ -47,16 +47,16 @@ $productId = getGet('id');
 				<button class="btn btn-light" style="border: solid grey 1px;"onclick="addMoreCart(1)">+</button>
 			</div>
 			<button class="btn btn-success" style="margin-top: 10px; width: 100%; border-radius: 0px; font-size:30px" onclick="addCart(<?=$product['id']?>,$('[name=num]').val())">
-				Them Vao Gio hang
+				Thêm vào giỏ hàng
 			</button>
 				<button class="btn btn-secondary" style="margin-top: 10px; width: 100%; border-radius: 0px; font-size:30px">
-				Xem Gio Hang
+				Xem giỏ hàng
 			</button>
 			
 		</div>
       
       <div class="col-md-12">
-      	<h3>Chi tiet san pham</h3>
+      	<h3>Chi tiết sản phẩm</h3>
       	<?=$product['description']?>
       </div>
 
@@ -70,7 +70,7 @@ $productId = getGet('id');
 
 <!--San Pham Moi Nhat start-->
 <div class="container">
-	<h1>San Pham Lien Quan</h1>
+	<h2>Các sản phẩm liên quan</h2>
 
 <div class="row" style="margin-top: 50px;">
 	<?php
@@ -81,7 +81,7 @@ $productId = getGet('id');
       	<p>'.$item['category_name'].'</p>
       	<p>'.$item['title'].'</p>
      	<p style="color: red">'.number_format($item['discount']).'</p>
-     	<p><button class="btn btn-success" onclick="addCart('.$item['id'].',1)" style="width:100%">Them Vao Gio Hang</button>
+     	<p><button class="btn btn-success" onclick="addCart('.$item['id'].',1)" style="width:100%">Thêm vào giỏ hàng</button>
       </p>
         </div>';
 	}
