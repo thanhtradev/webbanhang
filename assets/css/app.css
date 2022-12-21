@@ -1180,3 +1180,9 @@ footer ul li {
         height: unset;
     }
 }
+
+//new 
+.filter-list a.active {
+    font-weight: bold;
+    color: green;
+}

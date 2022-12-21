@@ -1,5 +1,39 @@
 <?php
 require_once('layouts/header.php');
+
+
+
+// Initial data
+$category_list = executeResult("select * from category");
+
+
+// Get data from url
+$category_id = getGet('id');
+
+$filter_price_max = getGet('maxprice');
+$filter_price_min = getGet('minprice');
+
+
+
+$filter_condition = '';
+// Check if max price is not null
+if ($filter_price_max != null && $filter_price_max != '') {
+    $filter_condition = " and product.discount <= $filter_price_max";
+}
+// Add min price default is 0
+if ($filter_price_min == null || $filter_price_min == '') {
+    $filter_price_min = 0;
+}
+$filter_condition .= " and product.discount >= $filter_price_min";
+
+// Check if category id is not null
+if ($category_id != null && $category_id != '') {
+    $filter_condition .= " and product.category_id = $category_id";
+}
+// Get data from database
+$sql = "select product.*, category.name as category_name from product left join category on product.category_id = category.id where product.deleted = 0 $filter_condition order by product.updated_at desc limit 0,8";
+$items = executeResult($sql);
+
 ?>
 
 <<!DOCTYPE html>
@@ -28,7 +62,7 @@ require_once('layouts/header.php');
         <div class="container">
             <div class="box">
                 <div class="breadcumb">
-                    <a href="./index.php">Trang Chủ ></a>
+                    <a href="./index.php">Trang Chủ></a>
                     
                     <a href="./products.php">Tất cả</a>
                 </div>
@@ -44,54 +78,62 @@ require_once('layouts/header.php');
                                 Danh Mục
                             </span>
                             <ul class="filter-list">
-                                <li><a href="#">Quần</a></li>
-                                <li><a href="#">Áo</a></li>
-                                <li><a href="#">Giày</a></li>
-                                <li><a href="#">Phụ Kiện</a></li>
+                                <?php
+                                    foreach ($category_list as $item) {
+                                        // Check if category is chosen
+                                        if ($item['id'] == $category_id) {
+                                            echo '<li><a href="./products.php?id=' . $item['id'] . '" class="active">' . $item['name'] . '</a></li>';
+                                            continue;
+                                        }
+                                        echo '<li><a href="./products.php?id=' . $item['id'] . '">' . $item['name'] . '</a></li>';
+                                    }
+                                    ?>
                             </ul>
                         </div>
                         
                         <div class="box">
-                            <span class="filter-header">
-                                Giá
-                            </span>
-                            <div class="price-range">
-                                <input type="text">
-                                <span>-</span>
-                                <input type="text">
+                                <span class="filter-header">
+                                    Giá
+                                </span>
+                                <div class="price-range">
+                                    <input type="number" id="filter_price_min" value="<?php echo $filter_price_min ?>">
+                                    <span>-</span>
+                                    <input type="number" id="filter_price_max" value="<?php echo $filter_price_max ?>">
+                                </div>
                             </div>
-                        </div>
-                        <div class="box">
-                            <ul class="filter-list">
-                                <li>
-                                    <div class="group-checkbox">
-                                        <input type="checkbox" id="status1">
-                                        <label for="status1">
-                                            Giá bán
-                                            <i class='bx bx-check'></i>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="group-checkbox">
-                                        <input type="checkbox" id="status2">
-                                        <label for="status2">
-                                            Trong kho
-                                            <i class='bx bx-check'></i>
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="group-checkbox">
-                                        <input type="checkbox" id="status3">
-                                        <label for="status3">
-                                            Đặc điểm
-                                            <i class='bx bx-check'></i>
-                                        </label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                            <div class="box" style="text-align:center">
+                                <button class="btn-flat btn-hover" id="filter_price_button">Áp dụng</button>
+
+                                <!-- <ul class="filter-list">
+                                    <li>
+                                        <div class="group-checkbox">
+                                            <input type="checkbox" id="status1">
+                                            <label for="status1">
+                                                Giá bán
+                                                <i class='bx bx-check'></i>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="group-checkbox">
+                                            <input type="checkbox" id="status2">
+                                            <label for="status2">
+                                                Trong kho
+                                                <i class='bx bx-check'></i>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="group-checkbox">
+                                            <input type="checkbox" id="status3">
+                                            <label for="status3">
+                                                Đặc điểm
+                                                <i class='bx bx-check'></i>
+                                            </label>
+                                        </div>
+                                    </li>
+                                </ul> -->
+                            </div>
                         <div class="box">
                             <span class="filter-header">
                                 Nhãn hàng
@@ -287,17 +329,18 @@ require_once('layouts/header.php');
     </div>
 
     <div class="col-md-9">
-
-        <div class="row">
-         <?php
-        if(isset($_GET['tukhoa'])){
+        <div class="container">
+            <div class="row" id="product">
+             <?php
+             if(isset($_GET['tukhoa'])){
             $tukhoa = $_GET['tukhoa'];
           }else{
             $tukhoa = '';
           }
          $sql = "select * from product where title like '%".$tukhoa."%'";
-         $lastestItems = executeResult($sql);
-    foreach($lastestItems as $item){
+         $items = executeResult($sql);
+
+  foreach($items as $item){
     echo '
     <div class="row">
     <div class="col-md-9 col-6 product-card">
@@ -327,13 +370,45 @@ require_once('layouts/header.php');
   }
   ?>
 </div>
+        </div>
     </div>
 </div>
     <!-- end products content -->
 
 </body>
 </html>
+<script type="text/javascript">
+    let product_list = document.querySelector('#products')
 
+
+    document.querySelector('#filter_price_button').addEventListener('click', () => {
+        // Get product id from url 
+        let url = new URL(window.location.href)
+        let product_id = url.searchParams.get('id')
+        // Get min and max price
+        let min_price = document.querySelector('#filter_price_min').value
+        let max_price = document.querySelector('#filter_price_max').value
+
+        let redirect_url = `./products.php?`;
+        if (product_id) {
+            redirect_url += `id=${product_id}`
+        }
+        if (min_price != 0) {
+            redirect_url += `&minprice=${min_price}`
+        }
+        if (max_price) {
+            redirect_url += `&maxprice=${max_price}`
+        }
+        window.location.href = redirect_url
+    })
+
+
+    let filter_col = document.querySelector('#filter-col')
+
+    document.querySelector('#filter-toggle').addEventListener('click', () => filter_col.classList.toggle('active'))
+
+    document.querySelector('#filter-close').addEventListener('click', () => filter_col.classList.toggle('active'))
+    </script>
 
 
 

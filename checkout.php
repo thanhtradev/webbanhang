@@ -8,7 +8,7 @@ require_once('layouts/header.php');
 <form method="post" onsubmit="return completeCheckout();">
 	<div class="row">
 	<div class="col-md-6">
-		<div class="form-group">
+		    <div class="form-group">
 				  <input required="true" type="text" class="form-control" id="usr" name="fullname" placeholder="Nhập Họ và Tên">
 				</div>
 				<div class="form-group">
@@ -24,6 +24,8 @@ require_once('layouts/header.php');
 				  <label for="address">Ghi chú:</label>
 				  <textarea class="form-control" rows="3" name="note"></textarea>
 				</div>
+
+			
 		
 	</div>
 	<div class="col-md-6">
@@ -43,6 +45,7 @@ if(!isset($_SESSION['cart'])){
 	$_SESSION['cart'] = [];
 }
 $index = 0;
+$total = 0;
 foreach($_SESSION['cart'] as $item){
 	echo'<tr>
 	<td>'.(++$index).'</td>
@@ -55,7 +58,8 @@ foreach($_SESSION['cart'] as $item){
 	<td>'.number_format($item['discount'] * $item['num']).' VND</td>
 	
         </tr>';
-
+  $total += $item['discount'] * $item['num'];
+   
 }
 ?>
 
@@ -67,6 +71,11 @@ foreach($_SESSION['cart'] as $item){
 	</div>
 </div>
 </form>
+
+	<form action="payment_momo.php" method="post">
+					<input type="hidden" name="total" value="<?php echo $total ?>">
+					<button class="btn btn-success" name="momo" id="momo">Thanh Toán MOMO</button>
+				</form>
 </div>
 
 <script type="text/javascript">
