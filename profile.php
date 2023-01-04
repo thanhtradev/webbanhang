@@ -1,6 +1,20 @@
 <?php
 require_once('layouts/header.php');
+ $currentUser = $_SESSION['user'];
+ $id = ($currentUser['id'] == null || trim($currentUser['id']) == '') ? '' : $currentUser['id'];
 
+ $sql = "select * from user where id = '$id'";
+ $userItem = executeResult($sql);
+foreach($userItem as $item){
+
+  $fullname = $item['fullname'];
+  $email = $item['email'];
+  $phone_number = $item['phone_number'];
+  $address = $item['address'];
+}
+
+
+      
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +41,6 @@ require_once('layouts/header.php');
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-
 html,body{
   
   height: 100%;
@@ -41,10 +54,10 @@ html,body{
   color: #fff;
 }
 .wrapper{
-  margin-left:550px ;
+  margin-left:500px ;
   margin-top: 20px;
   margin-bottom: 20px;
-  width: 680px;
+  width: 780px;
   background: #fff;
   border-radius: 15px;
 
@@ -54,16 +67,21 @@ html,body{
   font-weight: 600;
   text-align: center;
   line-height: 100px;
-  color: #fff;
+  color: black;
   user-select: none;
   border-radius: 15px 15px 0 0;
-  background: black;
 }
 .wrapper form{
   padding: 10px 30px 50px 30px;
 }
 .wrapper form .field{
-  height: 50px;
+  height: 40px;
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+}
+.wrapper form .text{
+   height: 50px;
   width: 100%;
   margin-top: 20px;
   position: relative;
@@ -155,45 +173,73 @@ form .pass-link a:hover,
 form .signup-link a:hover{
   text-decoration: underline;
 }
+.id_none{
+  display: none;
+}
 
     </style>
 </head>
 
 <body>
-
-    
 <div class="wrapper">
  <div class="title">
-   Đăng nhập
+   Thông tin tài khoản
  </div>
- <form method="post" action="process_form_login.php">
-    <div class="field">
-       <input type="text" required name="email">
-       <label>Email</label>
+ <form method="post" action="process_form_profile.php">
+
+  
+
+    <div class="row">
+      <div class="text col-md-3">Họ và tên</div>
+    <div class="field col-md-9">
+       <input type="text" required name="fullname">
+       <label><?php echo $fullname ?></label>
     </div>
-    <div class="field">
-       <input type="password" required name="password">
-       <label>Mật khẩu</label>
+  </div>
+
+  <div class="row">
+      <div class="text col-md-3">Email</div>
+    <div class="field col-md-9">
+       <input type="email" required name="email">
+       <label><?php echo $email ?></label>
     </div>
-    <div class="content">
-       <div class="checkbox">
-          <input type="checkbox" id="remember-me">
-          <label for="remember-me">Ghi nhớ</label>
-       </div>
-       <div class="pass-link">
-          <a href="#">Quên mật khẩu?</a>
-       </div>
+  </div>
+
+  <div class="row">
+      <div class="text col-md-3">Số điện thoại</div>
+    <div class="field col-md-9">
+       <input type="tel" required name="phone_number">
+       <label><?php echo $phone_number ?></label>
     </div>
+  </div>
+
+  <div class="row">
+      <div class="text col-md-3">Địa chỉ</div>
+    <div class="field col-md-9">
+       <input type="text" required name="address">
+       <label><?php echo $address ?></label>
+    </div>
+  </div>
+
+  <div class="id_none">
+      <div class="text col-md-3">ID</div>
+    <div class="field col-md-9">
+       <input type="text" value ="<?php echo $id ?>" name="id">
+       <label><?php echo $id ?></label>
+    </div>
+  </div>
+
     <div class="field">
-       <input type="submit" value="Đăng nhập">
+       <input type="submit" value="Cập Nhật">
     </div>
     <div class="signup-link">
-       Chưa có tài khoản? <a href="register.php">Đăng ký ngay</a>
+      <a href="tree_profile.php">Quay lại</a>
     </div>
+
+   
 
  </form>
 </div>
-
 </body>
 
 </html>

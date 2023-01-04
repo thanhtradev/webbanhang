@@ -1,8 +1,10 @@
 <?php
 require_once('layouts/header.php');
+
+
 ?>
 
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">

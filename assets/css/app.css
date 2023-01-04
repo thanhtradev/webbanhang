@@ -146,6 +146,7 @@ ul.devided > li:last-child {
 .logo {
     font-size: 40px;
     font-weight: 700;
+    margin-left: 50px;
 }
 
 .mb-logo {

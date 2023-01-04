@@ -42,8 +42,13 @@
             $totalMoney += $item['discount'] * $item['num'];
         }
 
-        $sql ="insert into orders(user_id,fullname,email,phone_number,address,note,order_date,status,total_money) values($userId,'$fullname','$email','$phone_number','$address','$note','$orderDate',1,'$totalMoney')";
+        if(isset($_SESSION['user'])){
+            $sql ="insert into orders(user_id,fullname,email,phone_number,address,note,order_date,status,total_money) values($userId,'$fullname','$email','$phone_number','$address','$note','$orderDate',1,'$totalMoney')";
         execute($sql);
+    }else{
+        $sql ="insert into orders(user_id,fullname,email,phone_number,address,note,order_date,status,total_money) values(5,'$fullname','$email','$phone_number','$address','$note','$orderDate',1,'$totalMoney')";
+        execute($sql);
+    }
 
         $sql = "select *from orders where order_date = '$orderDate'";
         $orderItem = executeResult($sql,true);

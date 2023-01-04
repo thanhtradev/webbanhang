@@ -23,11 +23,12 @@
           <th>Họ và tên</th>
           <th>SĐT</th>
           <th>Email</th>
-          <th>Dia Chi</th>
-          <th>Noi Dung</th>
-          <th>Ngay Đặt Hàng:</th>
-          <th>Tổng Tiền:</th>
-          <th style="width: 50px;"></th>
+          <th>Địa chỉ</th>
+          <th>Nội dung</th>
+          <th>Ngày đặt hàng</th>
+          <th>Tổng tiền</th>
+          <th style="width: 50px;">Trạng thái</th>
+          <th style="width: 50px;">Đơn hàng</th>
         </tr>
       </thead>
 <tbody>
@@ -41,17 +42,29 @@ foreach ($data as $item) {
           <th>'.$item['email'].'</th>
           <th>'.$item['address'].'</th>
           <th>'.$item['note'].'</th>
-          <th>'.$item['total_money'].'</th>
-           <th>'.$item['order_date'].'</th>  
+          <th>'.$item['order_date'].'</th>
+           <th>'.$item['total_money'].'</th>  
           <th style="width: 50px">';
           if($item['status'] ==1){
             echo '<button onclick="changeStautus('.$item['id'].',2)" class="btn btn-sm btn-success">Approve</button>
-            <button onclick="changeStautus('.$item['id'].',3)" class="btn btn-sm btn-danger">Cancel</button>';
+            <button onclick="changeStautus('.$item['id'].',4)" class="btn btn-sm btn-danger">Cancel</button>';
           }else if($item['status'] ==2){
             echo'<label class="badge badge-success">Approve</label>';
 
-          }else{
+          }else if($item['status'] ==4){
             echo'<label class="badge badge-danger">Cancel</label>';
+
+          }
+          echo '</th>
+          <th style="width: 50px">';
+          if($item['status'] ==1){
+            echo '';
+          }else if($item['status'] ==2){
+            echo'<button onclick="changeStautus('.$item['id'].',3)" class="btn btn-sm btn-warning">Đang giao hàng</button>
+            ';
+
+          }else if($item['status'] ==3){
+            echo'<label class="badge badge-dark">Đã giao hàng</label>';
 
           }
           echo '</th>

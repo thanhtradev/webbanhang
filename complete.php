@@ -6,9 +6,15 @@ require_once('layouts/header.php');
 
 <div class="container" style="margin-top: 20px; margin-bottom: 20px;">
 <div>
-	<h2>Thanh Toan thanh cong</h2>
+	<h2>Thanh Toán Thành Công</h2>
 
-  <a href="index.php">Quay tro lai mua hang</a>
+   <?php 
+  if(isset($_SESSION['user'])){
+  	echo '<a href="history_order.php">(Click)Xem Lịch Sử Đặt Hàng</a>';
+  }
+   ?>
+  <br>
+  <a href="index.php">Quay Trở lại Mua Hàng</a>
 	 
 </div>
 </div>

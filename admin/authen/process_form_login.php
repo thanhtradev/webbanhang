@@ -7,7 +7,7 @@ if(!empty($_POST)){
 	$pwd = getPost('password');
 	$pwd = getSecurityMD5($pwd);
 
-	$sql = "select * from User where email = '$email' and password = '$pwd'";
+	$sql = "select * from User where email = '$email' and password = '$pwd' and role_id=1 or role_id=2";
 	$userExist = executeResult($sql,true);
 	if($userExist == null){
 		$msg = 'Dang nhap khong thanh cong , vui long kiem tra lai email hoac mat khau';

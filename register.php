@@ -1,13 +1,8 @@
 <?php
 
     require_once('layouts/header.php');
-    require_once('process_form_register.php');
+
     
-     $user = getUserToken();
-    if($user != null){
-      header('Location:../');
-      die();
-    }
 ?>
 
 <!DOCTYPE html>
@@ -34,15 +29,26 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+html,body{
+  
+  height: 100%;
+  width: 100%;
+  place-items: center;
+  background: #f2f2f2;
+  /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
+}
 ::selection{
   background: #4158d0;
   color: #fff;
 }
 .wrapper{
-  width: 580px;
+  margin-left:350px ;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 680px;
   background: #fff;
   border-radius: 15px;
-  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
+
 }
 .wrapper .title{
   font-size: 35px;
@@ -52,7 +58,7 @@
   color: #fff;
   user-select: none;
   border-radius: 15px 15px 0 0;
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  background: black;
 }
 .wrapper form{
   padding: 10px 30px 50px 30px;
@@ -130,7 +136,7 @@ form .field input[type="submit"]{
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  background: black;
   transition: all 0.3s ease;
 }
 form .field input[type="submit"]:active{
@@ -157,15 +163,15 @@ form .signup-link a:hover{
     
 <div class="wrapper">
          <div class="title">
-            Đăng Ký
+            Đăng Ký Tài Khoản
          </div>
-         <form method="post" onsubmit="return validateForm();">
+         <form method="post" action="process_form_register.php" onsubmit="return validateForm();">
             <div class="field">
-               <input type="text" required name="fullname" value="<?=$fullname?>">
+               <input type="text" required name="fullname">
                <label>Họ và Tên</label>
             </div>
             <div class="field">
-               <input type="text" required name="email" value="<?=$email?>">
+               <input type="text" required name="email">
                <label>Email</label>
             </div>
             <div class="field">

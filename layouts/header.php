@@ -9,7 +9,9 @@
 
         $sql = "select product.*, category.name as category_name from product left join category on product.category_id = category.id order by product.updated_at desc limit 0,8";
         $lastestItems = executeResult($sql);
-        
+
+           
+
       ?>
 
     <!DOCTYPE html>
@@ -56,10 +58,10 @@
         	.bg-second {
         background-color: #f5f5f5;
     }
-    .container {
-        max-width: 1366px;
+    .container-fluid{
+       
         margin: auto;
-        padding: 0 20px;
+        padding: 0 50px;
         position: relative;
     }
     footer {
@@ -86,6 +88,7 @@
 
     }
         </style>
+    
 
 
 
@@ -156,7 +159,7 @@
     ?>
                 <!-- mid header -->
                 <div class="bg-main">
-                    <div class="mid-header container">
+                    <div class="mid-header container-fluid">
                         <a href="#" class="logo">Logo Shop</a>
                          <form method="get" action="search.php">
                         <div class="search">
@@ -166,9 +169,33 @@
                         </div>
                          </form>
                         <ul class="user-menu">
-                            <li><a href="#"><i class='bx bxs-bell'></i></a>Thông báo</li>
-                            <li><a href="login.php"><i class='bx bxs-user-circle'></i></a>Tài khoản</li>
-                            <li><a href="cart.php"><i class='bx bxs-cart'></i></a>Giỏ Hàng(<?=$count?>)</li>
+
+
+                            <?php 
+                            if (array_key_exists('user', $_SESSION)) {
+         $currentUser = $_SESSION['user'];
+ $id = ($currentUser['id'] == null || trim($currentUser['id']) == '') ? '' : $currentUser['id'];
+
+ $sql = "select * from user where id = '$id'";
+ $userItem = executeResult($sql);
+foreach($userItem as $item){
+
+  $fullname = $item['fullname'];
+
+}
+        
+                                echo '<li><a href="#"><i class="bx bxs-bell"></i></a>Thông báo</li>
+                            <li><a href="tree_profile.php"><i class="bx bxs-user-circle"></i>'.$fullname.'</a></li>
+                            <li><a href="cart.php"><i class="bx bxs-cart"></i></a>Giỏ Hàng('.$count.')</li>
+                            <li><a href="logout.php"><i class="bx bx-log-out"></i>></a></li>';
+                            }else {
+                                echo '<li><a href="#"><i class="bx bxs-bell"></i></a>Thông báo</li>
+                            <li><a href="login.php"><i class="bx bxs-user-circle"></i></a>Tài khoản</li>
+                            <li><a href="cart.php"><i class="bx bxs-cart"></i></a>Giỏ Hàng(<?=$count?>)</li>';
+                            }
+                             
+                            ?>
+                            
                         </ul>
                     </div>
                 </div>
@@ -176,7 +203,7 @@
                 
     <!-- bottom header -->
              <div class="bg-second">
-                  <div class="bottom-header container">
+                  <div class="bottom-header container-fluid">
                         <ul class="main-menu">
                             <li class="nav-item">
         <a class="nav-link" href="index.php">Trang Chủ</a>
@@ -194,6 +221,7 @@
       <li class="nav-item">
         <a class="nav-link" href="contact.php">Liên Hệ - Phản Hồi</a>
       </li>
+      
                         </ul>
                     </div>
                 </div>

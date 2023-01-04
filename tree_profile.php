@@ -27,7 +27,6 @@ require_once('layouts/header.php');
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-
 html,body{
   
   height: 100%;
@@ -54,10 +53,10 @@ html,body{
   font-weight: 600;
   text-align: center;
   line-height: 100px;
-  color: #fff;
+  color: black;
   user-select: none;
   border-radius: 15px 15px 0 0;
-  background: black;
+  background: white;
 }
 .wrapper form{
   padding: 10px 30px 50px 30px;
@@ -155,45 +154,54 @@ form .pass-link a:hover,
 form .signup-link a:hover{
   text-decoration: underline;
 }
-
+.info{
+  margin-top: 10px;
+  margin-left: 20px;
+}
+.order{
+  margin-top: 10px;
+  margin-left: 40px;
+}
+.menu_info{
+  margin-left: 20px;
+  margin-top: 20px;
+  color: grey;
+}
+.menu_order{
+  margin-left: 40px;
+  margin-top: 20px;
+  color: grey;
+}
     </style>
 </head>
 
 <body>
-
-    
 <div class="wrapper">
  <div class="title">
-   Đăng nhập
+   Tài Khoản
  </div>
- <form method="post" action="process_form_login.php">
-    <div class="field">
-       <input type="text" required name="email">
-       <label>Email</label>
-    </div>
-    <div class="field">
-       <input type="password" required name="password">
-       <label>Mật khẩu</label>
-    </div>
-    <div class="content">
-       <div class="checkbox">
-          <input type="checkbox" id="remember-me">
-          <label for="remember-me">Ghi nhớ</label>
-       </div>
-       <div class="pass-link">
-          <a href="#">Quên mật khẩu?</a>
-       </div>
-    </div>
-    <div class="field">
-       <input type="submit" value="Đăng nhập">
-    </div>
-    <div class="signup-link">
-       Chưa có tài khoản? <a href="register.php">Đăng ký ngay</a>
-    </div>
+ <div class="user-menu">
+   <div class="col-md-6">
+     <h6 class="info">Thông Tin Tài Khoản</h6>
+     <div class="menu_info">
+     <a href="#"><p>Cấp độ khách hàng</p></a>
+     <a href="#"><p>Điểm tích lũy</p></a>
+     <a href="profile.php"><p>Thay đổi thông tin</p></a>
+     <a href="#"><p>Thay đổi mật khẩu</p></a>
+     <a href="#"><p>Đăng xuất</p></a>
 
- </form>
+     </div>
+   </div>
+   <div class="col-md-6">
+     <h6 class="order">Thông Tin Tài Khoản</h6>
+     <div class="menu_order">
+     <a href="#"><p>Sản phẩm yêu thích</p></a>
+     <a href="history_order.php"><p>Lịch sử đơn hàng</p></a>
+     
+     </div>
+   </div>
+ </div>
 </div>
-
 </body>
 
 </html>

@@ -93,6 +93,3 @@ foreach($_SESSION['cart'] as $item){
 
 
 <!--Danh Muc San Pham end -->
-
-</body>
-</html>
