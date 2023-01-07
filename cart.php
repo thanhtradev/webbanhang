@@ -34,7 +34,7 @@ foreach($_SESSION['cart'] as $item){
 	<button class="btn btn-light" style="border: solid grey 1px;"onclick="addMoreCart('.$item['id'].',1)">+</button>
 	</td>
 	<td>'.number_format($item['discount'] * $item['num']).' VND</td>
-	<td><button class="btn btn-danger" onclick="updateCart('.$item['id'].',0)">Xoa</button></td>
+	<td><button class="btn btn-danger" onclick="updateCart('.$item['id'].',0)">Xóa</button></td>
         </tr>';
 
 }

@@ -87,7 +87,13 @@
     right: 35px;
 
     }
+    .aText{
+        text-decoration: none;
+    }
+    
+
         </style>
+    
     
 
 
@@ -118,7 +124,7 @@
                                 <a href="#">+840123456789</a>
                             </li>
                             <li>
-                                <a href="#">shop123@mail.com</a>
+                                <a href="#">fashionshop4429@mail.com</a>
                             </li>
                         </ul>
                         <ul class="devided">
@@ -160,7 +166,7 @@
                 <!-- mid header -->
                 <div class="bg-main">
                     <div class="mid-header container-fluid">
-                        <a href="#" class="logo">Logo Shop</a>
+                        <a href="#" class="logo">Thời Trang</a>
                          <form method="get" action="search.php">
                         <div class="search">
                                 <input type="text" placeholder="Search" name="tukhoa">
@@ -185,13 +191,13 @@ foreach($userItem as $item){
 }
         
                                 echo '<li><a href="#"><i class="bx bxs-bell"></i></a>Thông báo</li>
-                            <li><a href="tree_profile.php"><i class="bx bxs-user-circle"></i>'.$fullname.'</a></li>
+                            <li><a style="font-size:22px; margin-top:8px" href="tree_profile.php"><i class="bx bxs-user-circle"></i>'.$fullname.'</a></li>
                             <li><a href="cart.php"><i class="bx bxs-cart"></i></a>Giỏ Hàng('.$count.')</li>
                             <li><a href="logout.php"><i class="bx bx-log-out"></i>></a></li>';
                             }else {
                                 echo '<li><a href="#"><i class="bx bxs-bell"></i></a>Thông báo</li>
                             <li><a href="login.php"><i class="bx bxs-user-circle"></i></a>Tài khoản</li>
-                            <li><a href="cart.php"><i class="bx bxs-cart"></i></a>Giỏ Hàng(<?=$count?>)</li>';
+                            <li><a href="cart.php"><i class="bx bxs-cart"></i></a>Giỏ Hàng('.$count.')</li>';
                             }
                              
                             ?>

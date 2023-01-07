@@ -43,7 +43,7 @@ require_once('layouts/header.php');
                             </p>
                             <div class="top-down trans-delay-0-6">
                                 <button class="btn-flat btn-hover">
-                                    <span>Mua Ngay</span>
+                                    <a href="search.php"><span>Mua Ngay</span></a>
                                 </button>
                             </div>
                         </div>
@@ -133,9 +133,9 @@ require_once('layouts/header.php');
        <a href="detail.php?id='.$item['id'].'"><img src="'.$item['thumbnail'].'" style="height:380px; width: 400px"></a>
     </div>
        <div class="product-btn">
-                                <button class="btn-flat btn-hover btn-shop-now">Mua Ngay</button>
+                                
                                 <button onclick="addCart('.$item['id'].',1)" class="btn-flat btn-hover btn-cart-add">
-                                    <i class="bx bxs-cart-add"></i>
+                                    <i class="bx bxs-cart-add"></i>Thêm vào giỏ hàng
                                 </button>
                                 <button class="btn-flat btn-hover btn-cart-add">
                                     <i class="bx bxs-heart"></i>
@@ -226,9 +226,9 @@ foreach($menuItems as $item){
        <a href="detail.php?id='.$pItem['id'].'"><img src="'.$pItem['thumbnail'].'" style="height:380px; width: 400px"></a>
     </div>
        <div class="product-btn">
-                                <button class="btn-flat btn-hover btn-shop-now">Mua Ngay</button>
+                                
                                 <button onclick="addCart('.$pItem['id'].',1)" class="btn-flat btn-hover btn-cart-add">
-                                    <i class="bx bxs-cart-add"></i>
+                                    <i class="bx bxs-cart-add"></i>Thêm vào giỏ hàng
                                 </button>
                                 <button class="btn-flat btn-hover btn-cart-add">
                                     <i class="bx bxs-heart"></i>

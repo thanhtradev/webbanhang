@@ -7,6 +7,7 @@ require_once('layouts/header.php');
 $category_list = executeResult("select * from category");
 
 
+
 // Get data from url
 $category_id = getGet('id');
 
@@ -31,7 +32,7 @@ if ($category_id != null && $category_id != '') {
     $filter_condition .= " and product.category_id = $category_id";
 }
 // Get data from database
-$sql = "select product.*, category.name as category_name from product left join category on product.category_id = category.id where product.deleted = 0 $filter_condition order by product.updated_at desc limit 0,8";
+$sql = "select product.*, category.name as category_name from product left join category on product.category_id = category.id where product.deleted = 0 $filter_condition order by product.updated_at desc";
 $items = executeResult($sql);
 
 ?>
@@ -75,7 +76,7 @@ $items = executeResult($sql);
                         </div>
                         <div class="box">
                             <span class="filter-header">
-                                Danh Mục
+                                <h4>Bộ Lọc</h4>
                             </span>
                             <ul class="filter-list">
                                 <?php
@@ -88,12 +89,17 @@ $items = executeResult($sql);
                                         echo '<li><a href="./products.php?id=' . $item['id'] . '">' . $item['name'] . '</a></li>';
                                     }
                                     ?>
+                           
+                                    <li>Mới nhất</li>
+                                    <li>Giá thấp nhất</li>
+                                    <li>Giá cao nhất</li>
+                                   
                             </ul>
                         </div>
                         
                         <div class="box">
                                 <span class="filter-header">
-                                    Giá
+                                    Khoảng Giá
                                 </span>
                                 <div class="price-range">
                                     <input type="number" id="filter_price_min" value="<?php echo $filter_price_min ?>">

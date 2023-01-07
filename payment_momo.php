@@ -29,30 +29,21 @@ $partnerCode = 'MOMOBKUN20180529';
 $accessKey = 'klm05TvNBzhg7h7j';
 $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
 $orderInfo = "Thanh toán qua MoMo";
-$amount = $_POST['total'];
+$amount = "10000";
 $orderId = time() ."";
 $redirectUrl = "http://localhost/webbanhang/complete.php";
 $ipnUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b";
 $extraData = "";
 
 
-//if (!empty($_POST)) {
-    $partnerCode = $partnerCode;
-    $accessKey = $accessKey;
-    $serectkey = $secretKey;
-    $orderId = time(); // Mã đơn hàng
-    $orderInfo = "Thanh toán đơn hàng qua mã QR";
-    $amount = $amount;
-    //$ipnUrl = $_POST["ipnUrl"];
-    $redirectUrl = $redirectUrl;
-    $extraData = $extraData;
+
 
     $requestId = time() . "";
-    $requestType = "captureWallet";
+    $requestType = "payWithATM";
    // $extraData = ($_POST["extraData"] ? $_POST["extraData"] : "");
     //before sign HMAC SHA256 signature
     $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
-    $signature = hash_hmac("sha256", $rawHash, $serectkey);
+    $signature = hash_hmac("sha256", $rawHash, $secretKey);
     $data = array('partnerCode' => $partnerCode,
         'partnerName' => "Test",
         "storeId" => "MomoTestStore",
@@ -70,7 +61,6 @@ $extraData = "";
     $jsonResult = json_decode($result, true);  // decode json
 
     //Just a example, please check more in there
-
-    header('Location: ' . $jsonResult['payUrl']);
-//}
+     header('Location: ' . $jsonResult['payUrl']);
+//0919100100}
 ?>

@@ -32,16 +32,29 @@
  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <style type="text/css">
+     .navbar-brands{
+    color: white;
+     }
+     .form-inline{
+      margin-left: 40px;
+
+     }
+    </style>
 </head>
 
 <body>
 
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<h3 class="navbar-brands">Trang Quản Trị</h3>
   <form class="form-inline">
-    <a class="navbar-brand" href="#">Trang Quản Trị</a>
-    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+    
+    <input style = "border-radius: 10px;" class="form-control mr-sm-2" type="text" placeholder="Search">
     <button class="btn btn-success" type="submit">Search</button>
   </form>
+
 </nav>
 
    <div class="container-fluid">

@@ -79,16 +79,18 @@ foreach($_SESSION['cart'] as $item){
 
 
 	</table>
-	<a href="checkout.php"><button class="btn btn-warning">Thanh toán</button></a>
+	<h5>Tổng Tiền: <?php echo number_format($total) ?> VND</h5>
+	<a href="checkout.php"><button class="btn btn-warning">Thanh toán khi nhận hàng</button></a>
+	<form action="payment_momo.php" method="POST">
+					<input type="hidden" name="total" value="<?php echo $total ?>">
+					<button class="btn btn-success" name="momo" id="momo">Thanh toán trực tuyến qua ATM</button>
+				</form>
 	 
 	</div>
 </div>
 </form>
 
-	<form action="payment_momo.php" method="post">
-					<input type="hidden" name="total" value="<?php echo $total ?>">
-					<button class="btn btn-success" name="momo" id="momo">Thanh Toán MOMO</button>
-				</form>
+	
 </div>
 
 <script type="text/javascript">

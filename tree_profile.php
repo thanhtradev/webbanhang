@@ -193,7 +193,7 @@ form .signup-link a:hover{
      </div>
    </div>
    <div class="col-md-6">
-     <h6 class="order">Thông Tin Tài Khoản</h6>
+     <h6 class="order">Thông Tin Đơn Hàng</h6>
      <div class="menu_order">
      <a href="#"><p>Sản phẩm yêu thích</p></a>
      <a href="history_order.php"><p>Lịch sử đơn hàng</p></a>

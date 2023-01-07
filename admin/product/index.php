@@ -15,7 +15,7 @@
   <div class="col-md-12 table-responsive">
     <h1>Quản Lí Sản Phẩm</h1>
 
-    <a href="editor.php"><button class="btn btn-success">Thêm Sản Phẩm</button></a>
+    <a href="editor.php"><button style="margin-bottom:10px" class="btn btn-success">Thêm Sản Phẩm</button></a>
 
     <table class="table table-bordered table-hover">
       <thead>
